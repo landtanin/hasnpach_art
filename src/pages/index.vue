@@ -4,7 +4,7 @@
       <v-col cols="12">
         <v-card flat class="image-wrapper">
           <v-img
-            src="@/assets/haspnach-art.jpg"
+            :src="artImage"
             height="100vh"
             contain
             position="center"
@@ -29,6 +29,10 @@
     </div>
   </v-container>
 </template>
+
+<script setup>
+import artImage from '../assets/haspnach-art.jpg'
+</script>
 
 <style scoped>
 .v-container {
