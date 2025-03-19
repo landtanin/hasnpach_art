@@ -4,7 +4,7 @@
       <v-col cols="12">
         <v-card flat>
           <v-img
-            src="@/assets/elke-art.jpg"
+            src="@/assets/haspnach-art.jpg"
             height="100vh"
             width="100%"
             cover
@@ -14,23 +14,20 @@
         </v-card>
       </v-col>
     </v-row>
+    
+    <!-- Contact Button -->
+    <div class="contact-button-container">
+      <a 
+        href="mailto:elke@inkvalley-london.com" 
+        class="contact-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        CONTACT
+      </a>
+    </div>
   </v-container>
 </template>
-
-<script lang="ts" setup>
-  import { ref } from 'vue'
-  
-  const email = ref('')
-  
-  const submitSubscription = () => {
-    // Here you would implement the actual subscription logic
-    // For example, sending the email to your backend API
-    console.log('Subscription request for:', email.value)
-    // Reset the form
-    email.value = ''
-    // You could also add a success notification here
-  }
-</script>
 
 <style scoped>
 .v-container {
@@ -38,22 +35,31 @@
   position: relative;
 }
 
-.subscription-container {
+.contact-button-container {
   position: fixed;
-  bottom: 16px; /* Approximately 1-2cm from bottom edge */
+  bottom: 30px;
   left: 0;
   right: 0;
+  text-align: center;
   z-index: 100;
-  padding: 0 16px;
 }
 
-.subscription-box {
-  background-color: rgba(193, 171, 161, 0.2);
-  backdrop-filter: blur(10px);
+.contact-button {
+  display: inline-block;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: #F7A369;
+  background-color: rgba(59, 44, 35, 0.4);
+  text-decoration: none;
+  padding: 15px 30px;
+  border: 0.7px solid rgba(247, 163, 105, 0.7);
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
-.dark-button {
-  background-color: #12110F !important;
-  color: white !important;
+.contact-button:hover {
+  background-color: rgba(59, 44, 35, 0.7);
+  transform: scale(1.02);
 }
 </style>
