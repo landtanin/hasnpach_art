@@ -14,44 +14,6 @@
         </v-card>
       </v-col>
     </v-row>
-    
-    <!-- Email Subscription Box -->
-    <div class="subscription-container">
-      <v-sheet 
-        width="450" 
-        class="subscription-box mx-auto pa-4 rounded-lg"
-        elevation="4"
-      >
-        <h3 class="text-h6 font-weight-medium mb-2">Subscribe to Our Newsletter</h3>
-        <p class="text-body-2 mb-4">Stay updated with our latest art collections and exhibitions</p>
-        <v-form @submit.prevent="submitSubscription">
-          <v-row>
-            <v-col cols="8">
-              <v-text-field
-                v-model="email"
-                label="Your Email"
-                variant="outlined"
-                density="compact"
-                hide-details
-                placeholder="email@example.com"
-                type="email"
-                required
-              ></v-text-field>
-            </v-col>
-            <v-col cols="4">
-              <v-btn 
-                class="dark-button" 
-                block
-                height="40"
-                type="submit"
-              >
-                Subscribe
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-sheet>
-    </div>
   </v-container>
 </template>
 
