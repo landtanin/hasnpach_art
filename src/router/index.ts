@@ -9,8 +9,11 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
 
+// Define the base URL for GitHub Pages
+const base = import.meta.env.BASE_URL || '/hasnpach_art/'
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(base),
   routes: setupLayouts(routes),
 })
 
