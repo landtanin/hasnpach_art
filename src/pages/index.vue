@@ -38,7 +38,7 @@
 
 .image-wrapper {
   height: 100vh;
-  background-color: white;
+  background-color: transparent;
 }
 
 .main-image {
@@ -48,7 +48,7 @@
 
 .contact-button-container {
   position: fixed;
-  bottom: 30px;
+  bottom: 60px;
   left: 0;
   right: 0;
   text-align: center;
@@ -57,12 +57,12 @@
 
 .contact-button {
   display: inline-block;
-  font-size: 18px;
+  font-size: 12px;
   letter-spacing: 3px;
   color: #F7A369;
   background-color: rgba(59, 44, 35, 0.4);
   text-decoration: none;
-  padding: 15px 30px;
+  padding: 8px 16px;
   border: 0.7px solid rgba(247, 163, 105, 0.7);
   font-weight: 500;
   text-transform: uppercase;
