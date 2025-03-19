@@ -2,13 +2,14 @@
   <v-container fluid class="pa-0 ma-0 fill-height">
     <v-row no-gutters class="fill-height">
       <v-col cols="12">
-        <v-card flat>
+        <v-card flat class="image-wrapper">
           <v-img
             src="@/assets/haspnach-art.jpg"
             height="100vh"
-            width="100%"
-            cover
+            contain
+            position="center"
             alt="Hasnpach Art"
+            class="main-image"
           >
           </v-img>
         </v-card>
@@ -33,6 +34,16 @@
 .v-container {
   max-width: 100%;
   position: relative;
+}
+
+.image-wrapper {
+  height: 100vh;
+  background-color: white;
+}
+
+.main-image {
+  height: 100%;
+  width: 100%;
 }
 
 .contact-button-container {
