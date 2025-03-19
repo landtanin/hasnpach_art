@@ -19,7 +19,7 @@
     <!-- Contact Button -->
     <div class="contact-button-container">
       <a 
-        href="mailto:elke@inkvalley-london.com" 
+        href="mailto:atelier@inkvalley-london.com" 
         class="contact-button"
         target="_blank"
         rel="noopener noreferrer"
