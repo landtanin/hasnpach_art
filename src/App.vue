@@ -15,24 +15,59 @@
 </script>
 
 <style>
+/* Global scrollbar color */
+:root {
+  --scrollbar-color: #a98c7a;
+  --scrollbar-thumb-color: #97796a;
+}
+
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #a98c7a #a98c7a;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-color);
 }
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 12px;
+  background-color: var(--scrollbar-color);
 }
 
 *::-webkit-scrollbar-track {
-  background: #a98c7a;
+  background: var(--scrollbar-color);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #97796a;
+  background-color: var(--scrollbar-thumb-color);
   border-radius: 20px;
-  border: 3px solid #a98c7a;
+  border: 3px solid var(--scrollbar-color);
+}
+
+/* Mobile WebKit */
+@media (max-width: 430px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 3px !important;
+  }
+  
+  /* For iOS momentum scrolling */
+  .v-main {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+  }
+}
+
+/* For mobile browsers that support color-scheme */
+@media (max-width: 430px) {
+  :root {
+    color-scheme: light;
+  }
+  
+  body {
+    background-color: var(--scrollbar-color) !important;
+  }
 }
 </style>
