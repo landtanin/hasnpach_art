@@ -1,5 +1,5 @@
 <template>
-  <v-app :style="{ 'background-color': '#AA8D78' }">
+  <v-app :style="{ 'background-color': '#a98c7a' }">
     <router-view />
   </v-app>
 </template>
