@@ -1,13 +1,14 @@
 <template>
-  <v-container fluid class="pa-0 ma-0 fill-height">
-    <v-row no-gutters class="fill-height">
-      <v-col cols="12">
-        <v-card flat class="image-wrapper">
+  <v-container fluid class="pa-0 ma-0" :class="{ 'fill-height': !isMobile }">
+    <v-row no-gutters :class="{ 'fill-height': !isMobile }" justify="center">
+      <v-col cols="12" class="image-container">
+        <v-card flat class="image-wrapper" :class="{ 'mobile': isMobile }">
           <v-img
             :src="artImage"
-            height="100vh"
-            contain
-            position="center"
+            position="top"
+            :height="isMobile ? 'auto' : '100vh'"
+            :contain="!isMobile"
+            :cover="isMobile"
             alt="Hasnpach Art"
             class="main-image"
           >
@@ -31,7 +32,39 @@
 </template>
 
 <script setup>
-import artImage from '../assets/haspnach-art.jpg'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import artImageMobile from '../assets/Hanspach-art_mobile 430.jpg'
+import artImageTablet from '../assets/Hanspach-art_1280x832.jpg'
+import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
+
+const getResponsiveImage = () => {
+  if (window.innerWidth <= 430) {
+    return artImageMobile
+  } else if (window.innerWidth <= 1280) {
+    return artImageDesktop
+  }
+  return artImageDesktop
+}
+
+const windowWidth = ref(window.innerWidth)
+const artImage = ref(getResponsiveImage())
+
+const isMobile = computed(() => {
+  return windowWidth.value <= 430
+})
+
+const handleResize = () => {
+  windowWidth.value = window.innerWidth
+  artImage.value = getResponsiveImage()
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <style scoped>
@@ -40,14 +73,27 @@ import artImage from '../assets/haspnach-art.jpg'
   position: relative;
 }
 
+.image-container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 .image-wrapper {
   height: 100vh;
   background-color: transparent;
 }
 
+.image-wrapper.mobile {
+  height: auto;
+  min-height: 100vh;
+}
+
 .main-image {
-  height: 100%;
   width: 100%;
+}
+
+.main-image:deep(.v-img__img) {
+  object-position: top center;
 }
 
 .contact-button-container {
@@ -63,7 +109,7 @@ import artImage from '../assets/haspnach-art.jpg'
   display: inline-block;
   font-size: 12px;
   letter-spacing: 3px;
-  color: #F7A369;
+  color: #a98c7a;
   background-color: rgba(59, 44, 35, 0.4);
   text-decoration: none;
   padding: 8px 16px;
