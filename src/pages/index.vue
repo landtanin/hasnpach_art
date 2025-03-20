@@ -7,8 +7,8 @@
             :src="artImage"
             position="top"
             :height="isMobile ? 'auto' : '100vh'"
-            :contain="!isMobile"
-            :cover="isMobile"
+            :cover="!isMobile"
+            :contain="isMobile"
             alt="Hanspach Art"
             class="main-image"
           >
@@ -74,7 +74,6 @@ onUnmounted(() => {
 }
 
 .image-container {
-  max-width: 1920px;
   margin: 0 auto;
 }
 
@@ -85,7 +84,6 @@ onUnmounted(() => {
 
 .image-wrapper.mobile {
   height: auto;
-  min-height: 100vh;
 }
 
 .main-image {
