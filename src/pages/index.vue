@@ -107,7 +107,7 @@ onUnmounted(() => {
   display: inline-block;
   font-size: 12px;
   letter-spacing: 3px;
-  color: #a98c7a;
+  color: #ffa96d;
   background-color: rgba(59, 44, 35, 0.4);
   text-decoration: none;
   padding: 8px 16px;
