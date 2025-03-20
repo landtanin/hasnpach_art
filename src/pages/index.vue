@@ -37,17 +37,16 @@ import artImageMobile from '../assets/Hanspach-art_mobile 430.jpg'
 import artImageTablet from '../assets/Hanspach-art_1280x832.jpg'
 import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
 
-const getResponsiveImage = () => {
-  if (window.innerWidth <= 430) {
+const windowWidth = ref(window.innerWidth)
+
+const getResponsiveImage = computed(() => {
+  if (windowWidth.value <= 430) {
     return artImageMobile
-  } else if (window.innerWidth <= 1280) {
-    return artImageDesktop
+  } else if (windowWidth.value <= 1280) {
+    return artImageTablet
   }
   return artImageDesktop
-}
-
-const windowWidth = ref(window.innerWidth)
-const artImage = ref(getResponsiveImage())
+})
 
 const isMobile = computed(() => {
   return windowWidth.value <= 430
@@ -55,7 +54,6 @@ const isMobile = computed(() => {
 
 const handleResize = () => {
   windowWidth.value = window.innerWidth
-  artImage.value = getResponsiveImage()
 }
 
 onMounted(() => {
@@ -65,6 +63,8 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
+
+const artImage = computed(() => getResponsiveImage.value)
 </script>
 
 <style scoped>
@@ -108,7 +108,7 @@ onUnmounted(() => {
   font-size: 12px;
   letter-spacing: 3px;
   color: #ffa96d;
-  background-color: rgba(59, 44, 35, 0.4);
+  background-color: transparent;
   text-decoration: none;
   padding: 8px 16px;
   border: 0.7px solid rgba(247, 163, 105, 0.7);
