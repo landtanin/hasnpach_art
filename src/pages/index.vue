@@ -9,7 +9,7 @@
             :height="isMobile ? 'auto' : '100vh'"
             :contain="!isMobile"
             :cover="isMobile"
-            alt="Hasnpach Art"
+            alt="Hanspach Art"
             class="main-image"
           >
           </v-img>
