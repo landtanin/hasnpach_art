@@ -2,13 +2,13 @@
   <v-container fluid class="pa-0 ma-0" :class="{ 'fill-height': !isMobile }">
     <v-row no-gutters :class="{ 'fill-height': !isMobile }" justify="center">
       <v-col cols="12" class="image-container">
-        <v-card flat class="image-wrapper" :class="{ 'mobile': isMobile }">
+        <v-card flat class="image-wrapper" :class="{ 'mobile': isMobile, 'mobile-landscape': isMobileDevice && isLandscape }">
           <v-img
             :src="artImage"
             position="top"
             :height="isMobile ? 'auto' : '100vh'"
-            :cover="!isMobile"
-            :contain="isMobile"
+            :cover="!isMobile || (isMobileDevice && isLandscape)"
+            :contain="isMobile && !isLandscape"
             alt="Hanspach Art"
             class="main-image"
           >
@@ -40,20 +40,38 @@ import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
 const MOBILE_BREAKPOINT = 768
 
 const windowWidth = ref(window.innerWidth)
+const windowHeight = ref(window.innerHeight)
+
+// Check if the device is in landscape orientation
+const isLandscape = computed(() => {
+  return windowWidth.value > windowHeight.value
+})
+
+// Check if we're on a mobile device
+const isMobileDevice = computed(() => {
+  return windowWidth.value <= MOBILE_BREAKPOINT
+})
+
+// We're in mobile mode if we're on a mobile device AND in portrait orientation
+const isMobile = computed(() => {
+  return isMobileDevice.value && !isLandscape.value
+})
 
 const getResponsiveImage = computed(() => {
-  if (windowWidth.value <= MOBILE_BREAKPOINT) {
+  // If it's a mobile device in landscape, use desktop image
+  if (isMobileDevice.value && isLandscape.value) {
+    return artImageDesktop
+  }
+  // Otherwise follow the normal responsive rules
+  if (isMobileDevice.value) {
     return artImageMobile
   }
   return artImageDesktop
 })
 
-const isMobile = computed(() => {
-  return windowWidth.value <= MOBILE_BREAKPOINT
-})
-
 const handleResize = () => {
   windowWidth.value = window.innerWidth
+  windowHeight.value = window.innerHeight
 }
 
 onMounted(() => {
@@ -84,6 +102,11 @@ const artImage = computed(() => getResponsiveImage.value)
 
 .image-wrapper.mobile {
   height: auto;
+}
+
+.image-wrapper.mobile-landscape {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .main-image {
