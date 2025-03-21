@@ -34,20 +34,16 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import artImageMobile from '../assets/Hanspach-art_mobile 430.jpg'
-import artImageTablet from '../assets/Hanspach-art_1280x832.jpg'
 import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
 
-// Standard breakpoints
+// Standard breakpoint
 const MOBILE_BREAKPOINT = 768
-const TABLET_BREAKPOINT = 1280
 
 const windowWidth = ref(window.innerWidth)
 
 const getResponsiveImage = computed(() => {
   if (windowWidth.value <= MOBILE_BREAKPOINT) {
     return artImageMobile
-  } else if (windowWidth.value <= TABLET_BREAKPOINT) {
-    return artImageTablet
   }
   return artImageDesktop
 })
