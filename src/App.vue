@@ -44,7 +44,7 @@
 }
 
 /* Mobile WebKit */
-@media (max-width: 430px) {
+@media (max-width: 768px) {
   body {
     -webkit-overflow-scrolling: touch;
   }
@@ -61,7 +61,7 @@
 }
 
 /* For mobile browsers that support color-scheme */
-@media (max-width: 430px) {
+@media (max-width: 768px) {
   :root {
     color-scheme: light;
   }

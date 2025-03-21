@@ -37,19 +37,23 @@ import artImageMobile from '../assets/Hanspach-art_mobile 430.jpg'
 import artImageTablet from '../assets/Hanspach-art_1280x832.jpg'
 import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
 
+// Standard breakpoints
+const MOBILE_BREAKPOINT = 768
+const TABLET_BREAKPOINT = 1280
+
 const windowWidth = ref(window.innerWidth)
 
 const getResponsiveImage = computed(() => {
-  if (windowWidth.value <= 430) {
+  if (windowWidth.value <= MOBILE_BREAKPOINT) {
     return artImageMobile
-  } else if (windowWidth.value <= 1280) {
+  } else if (windowWidth.value <= TABLET_BREAKPOINT) {
     return artImageTablet
   }
   return artImageDesktop
 })
 
 const isMobile = computed(() => {
-  return windowWidth.value <= 430
+  return windowWidth.value <= MOBILE_BREAKPOINT
 })
 
 const handleResize = () => {
