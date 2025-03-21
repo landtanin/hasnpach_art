@@ -89,15 +89,37 @@ const artImage = computed(() => getResponsiveImage.value)
 .v-container {
   max-width: 100%;
   position: relative;
+  /* Extend into safe area on iOS */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100vw;
 }
 
 .image-container {
-  margin: 0 auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw;
+  max-width: none !important;
+}
+
+.v-col {
+  padding: 0 !important;
+}
+
+.v-row {
+  margin: 0 !important;
 }
 
 .image-wrapper {
   height: 100vh;
   background-color: transparent;
+  /* Extend to full viewport width including safe area */
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
 }
 
 .image-wrapper.mobile {
@@ -107,19 +129,47 @@ const artImage = computed(() => getResponsiveImage.value)
 .image-wrapper.mobile-landscape {
   height: 100vh;
   overflow: hidden;
+  /* Ensure full viewport coverage on iOS */
+  width: 100vw;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .main-image {
-  width: 100%;
+  width: 100vw;
+  max-width: none !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
 }
 
 .main-image:deep(.v-img__img) {
   object-position: top center;
+  width: 100vw !important;
+  max-width: none !important;
+}
+
+/* For landscape mode, ensure the image extends to edges */
+@media (orientation: landscape) {
+  .v-container, .v-row, .v-col, .image-container, .image-wrapper, .main-image {
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  .main-image:deep(.v-img__img) {
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
 }
 
 .contact-button-container {
   position: fixed;
-  bottom: 60px;
+  bottom: max(60px, env(safe-area-inset-bottom, 60px));
   left: 0;
   right: 0;
   text-align: center;
