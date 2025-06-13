@@ -33,8 +33,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
-import artImageMobile from '../assets/Hanspach-art_mobile 430.jpg'
-import artImageDesktop from '../assets/Hanspach-art_1920x1080.jpg'
+import artImageMobile from '../assets/hero-mobile.jpg'
+import artImageDesktop from '../assets/hero.jpg'
 
 // Standard breakpoint
 const MOBILE_BREAKPOINT = 768
